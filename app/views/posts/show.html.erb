@@ -1,0 +1,28 @@
+<div class="container">
+  <p>
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
+
+    <p>
+      <strong>Url:</strong>
+      <%= @post.url %>
+    </p>
+
+    <p>
+      <strong>Content:</strong>
+      <%= @post.content %>
+    </p>
+
+    <br>
+    <div style="border:1 px">
+      <h3>Komentarze</h3
+      <%= render @post.comments %>
+    </div>
+    <hr>
+    <p>Dodaj komentarz</p>
+    <%= form_for ([@post, @post.comments.build]) do |f| %>
+      <%= f.text_area :content %>
+      <%= submit_tag "Dodaj" %>
+    <% end %>
+</div>

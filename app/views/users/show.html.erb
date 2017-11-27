@@ -1,0 +1,15 @@
+<div class="row">
+  <aside class="col-md-4">
+    <div class="user_info">
+      <h1> <%= @user.name %>,  <%= @user.email %> </h1>
+    </div>
+  </aside>
+  <div class="col-md-8">
+   <% if @user.posts.any? %>
+     <ol class="posts">
+       <%= render @posts %>
+     </ol>
+     <%= will_paginate @posts %>
+   <% end %>
+ </div>
+</div>

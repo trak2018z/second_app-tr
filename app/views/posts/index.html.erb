@@ -1,0 +1,38 @@
+<% if logged_in? %>
+  <h3><%= link_to 'Dodaj materiał', new_post_path %></h3>
+<% end %>
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-3">
+    <% @posts.each do |post| %>
+    <div class="" style="border-style:dotted; padding-bottom: 10px;">
+      <h3 ><%= link_to "#{post.title}", post%></h3>
+
+      <h3 style="padding-bottom:3px">Utworzone przez <%= post.user.email %> </h3>
+      <h4><%= truncate "#{post.content}", length: 160 %></h4>
+      <div class="row">
+        <div class="col-md-2">
+          <%= link_to upvote_path(post), class: "like", method: :put do %>
+                  <button type="button" class="btn btn-info" aria-label="Left ALign">
+                      <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"
+                            aria-hidden="true"></span>
+                  </button>
+                  <% end %>
+        </div>
+        <div class="col-md-2">
+            <%= link_to downvote_path(post), class: "unlike", method: :put do %>
+            <button type="button" class="btn btn-info" aria-label="Right Align">
+              <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center"
+              aria-hidden="true"></span>
+            </button>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <% end %>
+  </div>
+
+</div>
